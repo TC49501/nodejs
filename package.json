@@ -1,21 +1,26 @@
 {
   "name": "nodejsapp",
-  "version": "1.0.0",
-  "description": "node.js sample app",
+  "version": "0.0.1",
+  "description": "This is an app that we'll create showing off the basics of node.js",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
+    "start": "node app",
+    "dev": "nodemon app"
   },
-  "author": "Thiru",
-  "license": "ISC",
+  "author": "rdzfinalrounduser",
+  "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
-    "ejs": "^3.1.8",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.0.1",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
-    "nodemon": "^2.0.19",
-    "path": "^0.12.7",
-    "uuid": "^8.3.2"
+    "mongoose": "^5.13.15",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
   }
 }
