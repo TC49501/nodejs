@@ -1,5 +1,8 @@
 var express = require("express");
 var passport = require("passport");
+const { deleteOne } = require("../../models/user");
+
+var ensureAuthenticated = require("../../auth/auth").ensureAuthenticated;
 
 var User = require("../../models/user");
 
@@ -17,6 +20,10 @@ router.get("/home", function (req, res) {
 
 router.get("/about", function (req, res) {
    res.render("home/about");
+});
+
+router.get("/posts", ensureAuthenticated, function(req, res){
+   res.render("home/posts")
 });
 
 router.get("/login", function (req, res) {
@@ -47,6 +54,13 @@ router.post("/signup", function (req, res, next) {
    var email = req.body.email;
    var password = req.body.password;
 
+   console.log("inside signup");
+
+   if (!username || !email || !password) {
+      //req.flash("info", "Enter Required field");
+      return next();
+   }
+
    User.findOne({ email: email }, function (err, user) {
       if (err) { return next(err); }
       if (user) {
@@ -59,6 +73,7 @@ router.post("/signup", function (req, res, next) {
          password: password,
          email: email
       });
+      console.log("inside signup save");
 
       newUser.save(next);
 
