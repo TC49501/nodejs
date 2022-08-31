@@ -15,6 +15,6 @@ router.use(function(req,res, next){
 
 
 router.use("/", require("./home"));
-
+router.use("/posts",require("./post"));
 
 module.exports = router;
